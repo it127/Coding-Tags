@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeLearn - Learn Programming with Tag Explanations</title>
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Global Styles */
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #15cf3a;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: #61e1d0;
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 22px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #333;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 25px;
+            padding: 0 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #1a252f;
+        }
+
+        /* Language Sections */
+        .language-section {
+            padding: 40px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .language-section h2 {
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .language-section h3 {
+            font-size: 22px;
+            margin: 25px 0 12px;
+            color: #3498db;
+        }
+
+        .code-container {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .code-container pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .code-comment {
+            color: #6A9955;
+        }
+
+        .code-tag {
+            color: #569CD6;
+        }
+
+        .code-attr {
+            color: #9CDCFE;
+        }
+
+        .code-value {
+            color: #CE9178;
+        }
+
+        .code-keyword {
+            color: #C586C0;
+        }
+
+        .code-function {
+            color: #DCDCAA;
+        }
+
+        .code-string {
+            color: #CE9178;
+        }
+
+        /* Tag Explanations */
+        .tag-explanation {
+            background-color: #e8f4fc;
+            border-left: 4px solid #3498db;
+            padding: 12px;
+            margin: 12px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .tag-explanation h4 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 17px;
+        }
+
+        .tag-explanation p {
+            margin-bottom: 5px;
+            font-size: 15px;
+        }
+
+        .tag-explanation .tag-name {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #d6eaf8;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 50px 0;
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        .about h2 {
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
+
+        .about p {
+            max-width: 800px;
+            margin: 0 auto 15px;
+            text-align: center;
+            padding: 0 10px;
+            font-size: 16px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a252f;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .language-section h2 {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #333;
+                flex-direction: column;
+                padding: 15px 0;
+                text-align: center;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .hero {
+                padding: 50px 0;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .language-section h2 {
+                font-size: 26px;
+            }
+            
+            .language-section h3 {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo {
+                font-size: 20px;
+            }
+            
+            .hero {
+                padding: 40px 0;
+            }
+            
+            .hero h1 {
+                font-size: 24px;
+            }
+            
+            .hero p {
+                font-size: 15px;
+            }
+            
+            .btn {
+                padding: 8px 20px;
+                font-size: 15px;
+            }
+            
+            .language-section {
+                padding: 30px 0;
+            }
+            
+            .language-section h2 {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+            
+            .language-section h3 {
+                font-size: 18px;
+            }
+            
+            .code-container {
+                padding: 12px;
+                font-size: 13px;
+            }
+            
+            .about h2 {
+                font-size: 26px;
+            }
+            
+            .about p {
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 22px;
+            }
+            
+            .language-section h2 {
+                font-size: 22px;
+            }
+            
+            .tag-explanation h4 {
+                font-size: 16px;
+            }
+            
+            .tag-explanation p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Code<span>Learn</span></div>
+                <div class="menu-toggle" id="mobile-menu">☰</div>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#html">HTML</a></li>
+                    <li><a href="#css">CSS</a></li>
+                    <li><a href="#javascript">JavaScript</a></li>
+                    <li><a href="#python">Python</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Learn to Code with Tag Explanations</h1>
+            <p>Master the fundamentals of web development and programming with our interactive code examples and detailed tag explanations.</p>
+            <a href="#html" class="btn">Start Learning</a>
+        </div>
+    </section>
+
+    <!-- HTML Section -->
+    <section id="html" class="language-section">
+        <div class="container">
+            <h2>HTML Basics with Tag Explanations</h2>
+            
+            <h3>HTML Document Structure</h3>
+            <div class="code-container">
+                <pre><code><span class="code-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="code-tag">&lt;html</span> <span class="code-attr">lang=</span><span class="code-value">"en"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;head&gt;</span>
+    <span class="code-tag">&lt;meta</span> <span class="code-attr">charset=</span><span class="code-value">"UTF-8"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;meta</span> <span class="code-attr">name=</span><span class="code-value">"viewport"</span> <span class="code-attr">content=</span><span class="code-value">"width=device-width, initial-scale=1.0"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;title&gt;</span>Document<span class="code-tag">&lt;/title&gt;</span>
+<span class="code-tag">&lt;/head&gt;</span>
+<span class="code-tag">&lt;body&gt;</span>
+    <span class="code-comment">&lt;!-- Your content goes here --&gt;</span>
+    <span class="code-tag">&lt;h1&gt;</span>Hello World!<span class="code-tag">&lt;/h1&gt;</span>
+    <span class="code-tag">&lt;p&gt;</span>This is a paragraph.<span class="code-tag">&lt;/p&gt;</span>
+<span class="code-tag">&lt;/body&gt;</span>
+<span class="code-tag">&lt;/html&gt;</span></code></pre>
+            </div>
+
+            <div class="tag-explanation">
+                <h4>HTML Document Structure Tags</h4>
+                <p><span class="tag-name">&lt;!DOCTYPE html&gt;</span> - Declares the document type and HTML version (HTML5 in this case).</p>
+                <p><span class="tag-name">&lt;html&gt;</span> - The root element of an HTML page. The <span class="tag-name">lang</span> attribute specifies the language of the document.</p>
+                <p><span class="tag-name">&lt;head&gt;</span> - Contains meta information about the document, links to stylesheets, scripts, and the title.</p>
+                <p><span class="tag-name">&lt;meta&gt;</span> - Provides metadata about the HTML document (character encoding, viewport settings, etc.).</p>
+                <p><span class="tag-name">&lt;title&gt;</span> - Sets the title of the document (shown in browser tab/window title).</p>
+                <p><span class="tag-name">&lt;body&gt;</span> - Contains the visible page content.</p>
+                <p><span class="tag-name">&lt;h1&gt;</span> - Main heading (there are also h2-h6 for subheadings).</p>
+                <p><span class="tag-name">&lt;p&gt;</span> - Defines a paragraph of text.</p>
+            </div>
+
+            <h3>Common HTML Tags with Explanations</h3>
+            <div class="code-container">
+                <pre><code><span class="code-comment">&lt;!-- Links --&gt;</span>
+<span class="code-tag">&lt;a</span> <span class="code-attr">href=</span><span class="code-value">"https://example.com"</span> <span class="code-attr">target=</span><span class="code-value">"_blank"</span><span class="code-tag">&gt;</span>Visit Example<span class="code-tag">&lt;/a&gt;</span>
+
+<span class="code-comment">&lt;!-- Images --&gt;</span>
+<span class="code-tag">&lt;img</span> <span class="code-attr">src=</span><span class="code-value">"image.jpg"</span> <span class="code-attr">alt=</span><span class="code-value">"Description"</span> <span class="code-attr">width=</span><span class="code-value">"200"</span><span class="code-tag">&gt;</span>
+
+<span class="code-comment">&lt;!-- Lists --&gt;</span>
+<span class="code-tag">&lt;ul&gt;</span>
+    <span class="code-tag">&lt;li&gt;</span>Unordered list item<span class="code-tag">&lt;/li&gt;</span>
+<span class="code-tag">&lt;/ul&gt;</span>
+
+<span class="code-tag">&lt;ol&gt;</span>
+    <span class="code-tag">&lt;li&gt;</span>Ordered list item<span class="code-tag">&lt;/li&gt;</span>
+<span class="code-tag">&lt;/ol&gt;</span>
+
+<span class="code-comment">&lt;!-- Divisions and Sections --&gt;</span>
+<span class="code-tag">&lt;div</span> <span class="code-attr">class=</span><span class="code-value">"container"</span><span class="code-tag">&gt;</span>Content<span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;section</span> <span class="code-attr">id=</span><span class="code-value">"main"</span><span class="code-tag">&gt;</span>Section content<span class="code-tag">&lt;/section&gt;</span></code></pre>
+            </div>
+
+            <div class="tag-explanation">
+                <h4>Common HTML Tags Explained</h4>
+                <p><span class="tag-name">&lt;a&gt;</span> - Creates hyperlinks. The <span class="tag-name">href</span> attribute specifies the URL, and <span class="tag-name">target="_blank"</span> opens the link in a new tab.</p>
+                <p><span class="tag-name">&lt;img&gt;</span> - Embeds images. <span class="tag-name">src</span> specifies the image source, <span class="tag-name">alt</span> provides alternative text, and <span class="tag-name">width</span> sets the width in pixels.</p>
+                <p><span class="tag-name">&lt;ul&gt;</span> - Unordered (bulleted) list. Contains <span class="tag-name">&lt;li&gt;</span> list items.</p>
+                <p><span class="tag-name">&lt;ol&gt;</span> - Ordered (numbered) list. Also contains <span class="tag-name">&lt;li&gt;</span> items.</p>
+                <p><span class="tag-name">&lt;div&gt;</span> - Generic container for flow content. Used with CSS for layout.</p>
+                <p><span class="tag-name">&lt;section&gt;</span> - Semantic section of content, typically with a heading.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CSS Section -->
+    <section id="css" class="language-section">
+        <div class="container">
+            <h2>CSS Fundamentals with Property Explanations</h2>
+            
+            <h3>Basic CSS Syntax</h3>
+            <div class="code-container">
+                <pre><code><span class="code-comment">/* Selector targets all &lt;p&gt; elements */</span>
+<span class="code-tag">p</span> {
+    <span class="code-attr">color</span>: <span class="code-value">blue</span>;
+    <span class="code-attr">font-size</span>: <span class="code-value">16px</span>;
+    <span class="code-attr">margin</span>: <span class="code-value">10px 0</span>;
+}
+
+<span class="code-comment">/* Class selector */</span>
+<span class="code-tag">.highlight</span> {
+    <span class="code-attr">background-color</span>: <span class="code-value">yellow</span>;
+    <span class="code-attr">padding</span>: <span class="code-value">5px 10px</span>;
+    <span class="code-attr">border-radius</span>: <span class="code-value">4px</span>;
+}</code></pre>
+            </div>
+
+            <div class="tag-explanation">
+                <h4>CSS Properties Explained</h4>
+                <p><span class="tag-name">color</span> - Sets the text color (can be named colors, hex, rgb, etc.).</p>
+                <p><span class="tag-name">font-size</span> - Sets the size of the font (px, em, rem, %, etc.).</p>
+                <p><span class="tag-name">margin</span> - Sets the outer spacing of an element. Can have 1-4 values (top, right, bottom, left).</p>
+                <p><span class="tag-name">background-color</span> - Sets the background color of an element.</p>
+                <p><span class="tag-name">padding</span> - Sets the inner spacing of an element (between content and border).</p>
+                <p><span class="tag-name">border-radius</span> - Rounds the corners of an element's border.</p>
+            </div>
+
+            <h3>Box Model Explained</h3>
+            <div class="code-container">
+                <pre><code><span class="code-tag">.box</span> {
+    <span class="code-attr">width</span>: <span class="code-value">300px</span>;
+    <span class="code-attr">height</span>: <span class="code-value">200px</span>;
+    <span class="code-attr">padding</span>: <span class="code-value">20px</span>;
+    <span class="code-attr">border</span>: <span class="code-value">2px solid black</span>;
+    <span class="code-attr">margin</span>: <span class="code-value">30px</span>;
+    <span class="code-attr">box-sizing</span>: <span class="code-value">border-box</span>;
+}</code></pre>
+            </div>
+
+            <div class="tag-explanation">
+                <h4>Box Model Properties</h4>
+                <p><span class="tag-name">width</span> / <span class="tag-name">height</span> - Sets the dimensions of the content area.</p>
+                <p><span class="tag-name">padding</span> - Space between content and border. Adds to total element size unless box-sizing is border-box.</p>
+                <p><span class="tag-name">border</span> - The line around the element. Syntax: width style color.</p>
+                <p><span class="tag-name">margin</span> - Space outside the border, separating elements.</p>
+                <p><span class="tag-name">box-sizing: border-box</span> - Makes width/height include padding and border (more intuitive sizing).</p>
+            </div>
+
+            <h3>Flexbox Layout</h3>
+            <div class="code-container">
+                <pre><code><span class="code-tag">.container</span> {
+    <span class="code-attr">display</span>: <span class="code-value">flex</span>;
+    <span class="code-attr">justify-content</span>: <span class="code-value">center</span>;
+    <span class="code-attr">align-items</span>: <span class="code-value">center</span>;
+    <span class="code-attr">gap</span>: <span class="code-value">20px</span>;
+    <span class="code-attr">flex-wrap</span>: <span class="code-value">wrap</span>;
+}
+
+<span class="code-tag">.item</span> {
+    <span class="code-attr">flex</span>: <span class="code-value">1</span>;
+    <span class="code-attr">min-width</span>: <span class="code-value">200px</span>;
+}</code></pre>
+            </div>
+
+            <div class="tag-explanation">
+                <h4>Flexbox Properties</h4>
+                <p><span class="tag-name">display: flex</span> - Enables flexbox layout for direct children.</p>
+                <p><span class="tag-name">justify-content</span> - Aligns items along the main axis (horizontal by default).</p>
+                <p><span class="tag-name">align-items</span> - Aligns items along the cross axis (vertical by default).</p>
+                <p><span class="tag-name">gap</span> - Sets space between flex items.</p>
+                <p><span class="tag-name">flex-wrap</span> - Allows items to wrap to new lines if needed.</p>
+                <p><span class="tag-name">flex</span> - Shorthand for flex-grow, flex-shrink, and flex-basis.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript Section -->
+    <section id="javascript" class="language-section">
+        <div class="container">
+            <h2>JavaScript Basics with Explanations</h2>
+            
+            <h3>Variables and Data Types</h3>
+            <div class="code-container">
+                <pre><code><span class="code-comment">// Variables</span>
+<span class="code-keyword">let</span> message = <span class="code-string">"Hello, World!"</span>; <span class="code-comment">// String</span>
+<span class="code-keyword">const</span> PI = <span class="code-value">3.14</span>; <span class="code-comment">// Constant number</span>
+<span class="code-keyword">var</span> oldVariable = <span class="code-value">10</span>; <span class="code-comment">// Old way (avoid)</span>
+
+<span class="code-comment">// Data Types</span>
+<span class="code-keyword">let</span> isActive = <span class="code-value">true</span>; <span class="code-comment">// Boolean</span>
+<span class="code-keyword">let</span> person = { <span class="code-comment">// Object</span>
+    name: <span class="code-string">"John"</span>,
+    age: <span class="code-value">30</span>
+};
+<span class="code-keyword">let</span> colors = [<span class="code-string">"red"</span>, <span class="code-string">"green"</span>, <span class="code-string">"blue"</span>]; <span class="code-comment">// Array</span></code></pre>
+            </div>
+
+            <div class="tag-explanation">
+                <h4>JavaScript Variables and Data Types</h4>
+                <p><span class="tag-name">let</span> - Declares a block-scoped variable that can be reassigned.</p>
+                <p><span class="tag-name">const</span> - Declares a block-scoped constant that cannot be reassigned.</p>
+                <p><span class="tag-name">var</span> - Old way to declare variables (function-scoped, avoid in modern code).</p>
+                <p><span class="tag-name">Primitive Types</span> - String (text), Number (integer or decimal), Boolean (true/false), Null, Undefined.</p>
+                <p><span class="tag-name">Object</span> - Collection of key-value pairs (properties and methods).</p>
+                <p><span class="tag-name">Array</span> - Ordered list of values (can mix types).</p>
+            </div>
+
+            <h3>Functions Explained</h3>
+            <div class="code-container">
+                <pre><code><span class="code-comment">// Function declaration</span>
+<span class="code-keyword">function</span> <span class="code-function">greet</span>(name) {
+    <span class="code-keyword">return</span> <span class="code-string">`Hello, </span>${name}<span class="code-string">!`</span>;
+}
+
+<span class="code-comment">// Arrow function (ES6+)</span>
+<span class="code-keyword">const</span> add = (a, b) => {
+    <span class="code-keyword">return</span> a + b;
+};
+
+<span class="code-comment">// Immediately Invoked Function Expression (IIFE)</span>
+(<span class="code-keyword">function</span>() {
+    console.<span class="code-function">log</span>(<span class="code-string">'This runs immediately'</span>);
+})();</code></pre>
+            </div>
+
+            <div class="tag-explanation">
+                <h4>JavaScript Functions</h4>
+                <p><span class="tag-name">function</span> - Traditional function declaration (hoisted, can be called before declaration).</p>
+                <p><span class="tag-name">arrow function</span> - Shorter syntax, doesn't have its own <span class="tag-name">this</span> context.</p>
+                <p><span class="tag-name">parameters</span> - Variables listed in the function definition (name in the example).</p>
+                <p><span class="tag-name">arguments</span> - Values passed to the function when called.</p>
+                <p><span class="tag-name">return</span> - Specifies the value to return from the function.</p>
+                <p><span class="tag-name">IIFE</span> - Immediately Invoked Function Expression, runs as soon as defined.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Python Section -->
+    <section id="python" class="language-section">
+        <div class="container">
+            <h2>Python Basics with Explanations</h2>
+            
+            <h3>Variables and Data Types</h3>
+            <div class="code-container">
+                <pre><code><span class="code-comment"># Variables</span>
+message = <span class="code-string">"Hello, World!"</span>  <span class="code-comment"># String</span>
+pi = <span class="code-value">3.14159</span>  <span class="code-comment"># Float</span>
+count = <span class="code-value">10</span>  <span class="code-comment"># Integer</span>
+is_active = <span class="code-value">True</span>  <span class="code-comment"># Boolean</span>
+
+<span class="code-comment"># Collections</span>
+colors = [<span class="code-string">"red"</span>, <span class="code-string">"green"</span>, <span class="code-string">"blue"</span>]  <span class="code-comment"># List (mutable)</span>
+person = {<span class="code-string">"name"</span>: <span class="code-string">"Alice"</span>, <span class="code-string">"age"</span>: <span class="code-value">25</span>}  <span class="code-comment"># Dictionary (key-value pairs)</span></code></pre>
+            </div>
+
+            <div class="tag-explanation">
+                <h4>Python Variables and Data Types</h4>
+                <p><span class="tag-name">Variables</span> - No declaration needed, created when first assigned.</p>
+                <p><span class="tag-name">Strings</span> - Text data, enclosed in single or double quotes.</p>
+                <p><span class="tag-name">Numbers</span> - Integers (whole numbers) and floats (decimals).</p>
+                <p><span class="tag-name">Boolean</span> - True or False values (must be capitalized).</p>
+                <p><span class="tag-name">List</span> - Ordered, mutable collection of items.</p>
+                <p><span class="tag-name">Dictionary</span> - Unordered collection of key-value pairs.</p>
+            </div>
+
+            <h3>Functions and Control Flow</h3>
+            <div class="code-container">
+                <pre><code><span class="code-comment"># Function definition</span>
+<span class="code-keyword">def</span> <span class="code-function">greet</span>(name):
+    <span class="code-keyword">return</span> <span class="code-string">f"Hello, </span>{name}<span class="code-string">!"</span>
+
+<span class="code-comment"># If-elif-else statement</span>
+<span class="code-keyword">if</span> age >= <span class="code-value">18</span>:
+    print(<span class="code-string">"Adult"</span>)
+<span class="code-keyword">elif</span> age >= <span class="code-value">13</span>:
+    print(<span class="code-string">"Teen"</span>)
+<span class="code-keyword">else</span>:
+    print(<span class="code-string">"Child"</span>)
+
+<span class="code-comment"># For loop</span>
+<span class="code-keyword">for</span> color <span class="code-keyword">in</span> colors:
+    print(color)</code></pre>
+            </div>
+
+            <div class="tag-explanation">
+                <h4>Python Functions and Control Flow</h4>
+                <p><span class="tag-name">def</span> - Keyword to define a function.</p>
+                <p><span class="tag-name">return</span> - Specifies the value to return from the function.</p>
+                <p><span class="tag-name">f-strings</span> - Formatted string literals (f before quotes allows {variables}).</p>
+                <p><span class="tag-name">if-elif-else</span> - Conditional statements for decision making.</p>
+                <p><span class="tag-name">for loop</span> - Iterates over items in a sequence (list, string, etc.).</p>
+                <p><span class="tag-name">indentation</span> - Python uses indentation (4 spaces) to define code blocks.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <h2>About CodeLearn</h2>
+            <p>CodeLearn is a free resource for learning programming fundamentals with detailed explanations of tags, properties, and syntax.</p>
+            <p>Our mission is to make coding accessible through clear examples and comprehensive explanations of each concept.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 CodeLearn. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu').addEventListener('click', function() {
+            document.getElementById('nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
